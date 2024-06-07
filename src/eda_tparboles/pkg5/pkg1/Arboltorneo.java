@@ -98,6 +98,25 @@ public class Arboltorneo {
         return raiz;
     }
 
+    public boolean nuevaPuntuacion(Nodo raiz, int valorAnterior, int valorNuevo) {
+        if (raiz == null) {
+            return false;
+        } else if (raiz.getArquero().getPuntuacion() == valorAnterior) {
+            raiz.getArquero().setPuntuacion(valorNuevo);
+            return true;
+        }
+
+        if (nuevaPuntuacion(raiz.getIzquierda(), valorAnterior, valorNuevo)) {
+            return true;
+        }
+
+        if (nuevaPuntuacion(raiz.getDerecha(), valorAnterior, valorNuevo)) {
+            return true;
+        }
+
+        return false;
+    }
+
     //---------------------------------------------------------------------------
     //---------------------------------------------------------------------------
     public Nodo getRaiz() {
